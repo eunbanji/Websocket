@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invite a Friend</title>
+    <link href="https://fonts.googleapis.com/css2?family=Itim&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+</head>
+<body>
+<div class="container">
+    <h2>Invite a Friend</h2>
+    <p>Click the button below to generate an invite code for your friend.</p>
+    <button onclick="generateInviteCode()">Generate Invite Code</button>
+    <div id="invite-code-box" class="invite-code-box" style="display: none;">
+        <p>Your Invite Code:</p>
+        <strong id="inviteCode"></strong>
+    </div>
+</div>
+
+<script>
+    async function generateInviteCode() {
+        try {
+            const response = await fetch('/generateInviteCode', {
+                method: 'POST'
+            });
+            if (response.ok) {
+                const data = await response.json();
+                if (data.inviteCode) {
+                    document.getElementById('inviteCode').innerText = data.inviteCode;
+                    document.getElementById('invite-code-box').style.display = 'block';
+                } else if (data.error) {
+                    alert(data.error);
+                }
+            } else {
+                alert('Failed to generate invite code');
+            }
+        } catch (error) {
+            console.error('Error generating invite code:', error);
+            alert('An error occurred while generating the invite code');
+        }
+    }
+</script>
+</body>
+</html>

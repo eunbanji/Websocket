@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Chat</title>
+    <link href="https://fonts.googleapis.com/css2?family=Itim&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/chat.css}" />
+</head>
+<body>
+
+<div class="chat-container">
+    <div class="chat-header">
+        <h2>Live Chat</h2>
+    </div>
+    <div id="chat-box" class="chat-box">
+        <!-- 예제 메시지 -->
+        <div class="chat-message my-message">
+            <span>Let's get lunch! How about pizza? 🍕</span>
+            <div class="timestamp">Yesterday 9:41</div>
+        </div>
+    </div>
+    <div class="chat-input">
+        <input type="text" id="messageInput" placeholder="Type your message..." />
+        <button onclick="sendMessage()">Send</button>
+    </div>
+</div>
+
+<script>
+    let socket = new WebSocket("ws://localhost:8082/chat");
+
+    socket.onopen = function () {
+        console.log("Connected to WebSocket");
+    };
+
+    socket.onmessage = function (event) {
+        addMessage(event.data, 'other-message');
+    };
+
+    function sendMessage() {
+        const messageInput = document.getElementById("messageInput");
+        const message = messageInput.value;
+        if (message) {
+            socket.send(message);
+            addMessage(message, 'my-message');
+            messageInput.value = ""; // 입력 필드 비우기
+        }
+    }
+
+    function addMessage(text, className) {
+        const chatBox = document.getElementById("chat-box");
+
+        // 메시지 요소 생성
+        const messageElement = document.createElement("div");
+        messageElement.className = `chat-message ${className}`;
+        messageElement.innerText = text;
+
+        // 타임스탬프 요소 생성
+        const timestamp = document.createElement("div");
+        timestamp.className = "timestamp";
+        const date = new Date();
+        timestamp.innerText = date.toLocaleTimeString();
+
+        // 메시지에 타임스탬프 추가
+        messageElement.appendChild(timestamp);
+
+        // 채팅 박스에 메시지를 추가
+        chatBox.insertBefore(messageElement, chatBox.firstChild);
+    }
+
+    // 페이지를 떠날 때 소켓 닫기
+    window.onbeforeunload = function() {
+        socket.close();
+    };
+</script>
+
+
+</body>
+</html>
+

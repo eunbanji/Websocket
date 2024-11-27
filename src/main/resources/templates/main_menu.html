@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Menu</title>
+    <!-- Google Fonts 링크: Itim과 Poppins 폰트를 사용 -->
+    <link href="https://fonts.googleapis.com/css2?family=Itim&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!-- 외부 스타일 시트 파일(style.css)을 링크 -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+</head>
+<body>
+
+<div class="container">
+    <!-- 우측 상단에 사용자 이메일 표시 -->
+    <div class="user-info" style="text-align: right; padding: 10px;">
+        <p th:text="'Logged in as: ' + ${email}"></p>
+    </div>
+
+    <div class="lil_branding">un_society</div>
+    <div class="buttons">
+        <div class="row">
+            <!-- 'Show me what you want' 버튼 -->
+            <button class="showme-button" onclick="showAlert()">Show me what you want</button>
+            <!-- 로그아웃 버튼 -->
+            <button class="logout-button" onclick="confirmLogout()">Log out</button>
+        </div>
+        <div class="row">
+            <!-- 'Live Chat' 버튼 -->
+            <button class="livechat-button" onclick="location.href='/chat'">Live Chat</button>
+            <!-- 친구 초대 버튼 -->
+            <button class="inviteUR-button" onclick="location.href='/register'">Invite your friend!</button>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript 코드 -->
+<script>
+    function confirmLogout() {
+        const confirmLogout = confirm("로그아웃 할까요?");
+        if (confirmLogout) {
+            window.location.href = "/logout";
+        }
+    }
+
+    function showAlert() {
+        alert("준비 중");
+    }
+</script>
+
+</body>
+</html>

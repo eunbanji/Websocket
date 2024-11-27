@@ -1,0 +1,296 @@
+/* 기본적인 모든 요소의 margin과 padding을 0으로 초기화하고,
+   box-sizing을 border-box로 설정하여 레이아웃 계산이 쉬워지도록 설정 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* body에 폰트를 지정하고, 화면 높이만큼의 뷰에서 flexbox를 사용하여
+   컨텐츠를 수평 및 수직으로 중앙 정렬 */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(180deg, white 0%, #A2A2A2 69%, #999999 89%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+}
+
+/* 컨테이너 안의 요소들을 수직 중앙 정렬하는 flexbox 설정 */
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.row {
+  display: flex; /* 각 행을 가로 방향으로 정렬 */
+  justify-content: space-between; /* 버튼들 사이의 간격을 자동으로 조정 */
+  width: 800px; /* 행의 너비를 지정하여 버튼들이 적당한 간격을 유지 */
+}
+
+
+/* grid 레이아웃을 이용하여 두개의 단으로 나누어 나란히 배치 */
+.dual_container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 두 개의 열을 동일한 비율로 나눔 */
+  gap: 10px; /* 단 사이의 간격 */
+  width: 100%; /* 전체 너비를 차지 */
+}
+
+.left-column, .right-column {
+  padding: 5px;
+}
+
+
+/* 사이트 로고인 'un_society'에 그라데이션 텍스트 적용 및 크기 설정 */
+.branding {
+  font-family: 'Itim', cursive;
+  font-size: 128px;
+  background: linear-gradient(90deg, rgba(8, 17, 245, 0.56) 12.79%, rgba(240, 16, 16, 0.56) 99.99%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 20px;
+}
+
+
+/* un_society */
+.lil_branding {
+/* un_society */
+
+position: absolute;
+width: 324.9px;
+height: 87.01px;
+left: 95.4px;
+top: 33.96px;
+
+font-family: 'Itim';
+font-style: normal;
+font-weight: 400;
+font-size: 70px;
+line-height: 84px;
+text-align: center;
+
+background: linear-gradient(90.01deg, rgba(8, 17, 245, 0.56) 12.79%, rgba(240, 16, 16, 0.56) 99.99%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+text-fill-color: transparent;
+
+
+}
+
+
+/* 'Sign in to your account' 제목 스타일 설정 */
+.title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+/* 부제목(설명 텍스트) 스타일 설정 */
+.subtitle {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  color: #52525B;
+  margin-bottom: 40px;
+}
+
+/* 로그인 폼의 박스 디자인: 흰색 배경, 그림자, 패딩, 테두리 둥글기 적용 */
+.login-box {
+  background-color: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  width: 400px;
+}
+
+/* 입력 필드의 기본 설정 및 하단 여백 설정 */
+.input-box {
+  margin-bottom: 20px;
+}
+/*  작은 규모  */
+.small-input-box {
+  margin-bottom: 10px;
+}
+
+/* 이메일 및 비밀번호 입력 필드의 크기, 테두리 및 스타일 지정 */
+input[type="email"], input[type="password"], input[type = "text"],input[type = "number"] {
+  width: 100%;
+  padding: 13px;
+  border: 2px solid #E4E4E7;
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* 'Remember me'와 'Forgot password?' 링크를 좌우로 배치 */
+.remember-forgot {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #52525B;
+  margin-bottom: 20px;
+}
+
+/* 'Forgot password?' 링크 스타일 설정 */
+.remember-forgot a {
+  color: #2563EB;
+  text-decoration: none;
+}
+
+/* 로그인 버튼 스타일: 파란색 배경, 흰색 텍스트, 둥근 모서리 */
+.sign-in-button {
+  width: 100%;
+  background-color: #2563EB;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* 로그인 버튼에 마우스를 올렸을 때의 hover 효과 */
+.sign-in-button:hover {
+  background-color: #1D4ED8;
+}
+.create_account {
+  width: 100%;
+  background-color: #FFF522;
+  color: black;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* make account Form */
+.create_account_box{
+  background-color: white;
+  padding: 50px;
+  border-radius: 10px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  width: 800px;
+  margin: 0 auto;
+}
+
+/* 입력 필드의 기본 설정 및 하단 여백 설정 */
+.input-box2 {
+  margin-bottom: 20px;
+  width: 90%;
+}
+
+.buttons {
+  display: grid;
+  flex-wrap: repeat(2,1fr);/* 여러 줄로 버튼 정렬 가능 */
+  grid-gap: 20px;
+  justify-content: center; /* 버튼들을 수평 중앙에 정렬 */
+  padding: 10px;
+}
+/* Button/Primary/With Icon */
+.showme-button {
+
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 20px;
+gap: 20px;
+color : white;
+
+width: 381px;
+height: 288px;
+
+background: #A03B4F;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 20px;
+
+}
+
+.logout-button{
+/* Button/Primary/With Icon */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 16px;
+gap: 10px;
+color : white;
+
+width: 381px;
+height: 288px;
+
+background: #D03B4F;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 20px;
+
+}
+
+.livechat-button{
+/* Button/Primary/With Icon */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 16px;
+gap: 10px;
+color : white;
+
+width: 381px;
+height: 288px;
+
+background: #303B4F;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 20px;
+
+}
+
+.inviteUR-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  gap: 10px;
+  color: white;
+
+  width: 381px;
+  height: 288px;
+
+  background: #803B4F;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+}
+
+/* 우측 상단 사용자 정보 스타일 */
+.user-info {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background-color: #f0f0f0; /* 배경 색상 */
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+    color: #555;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+    transition: all 0.3s ease; /* 호버 효과 */
+}
+
+
+

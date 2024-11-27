@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+    <link href="https://fonts.googleapis.com/css2?family=Itim&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+</head>
+<body>
+
+<div class="lil_branding">un_society</div>
+
+<div style="width: 100%;">
+    <div class="title">대충 회원가입</div>
+
+    <div class="create_account_box">
+        <div class="container">
+            <form action="/register" method="POST" style="width: 100%;">
+                <div style="display: flex; width: 100%;">
+                    <div style="width: 50%;">
+                        <div class="input-box2">
+                            <input type="email" name="email" placeholder="이메일 주소를 입력하세요" required>
+                        </div>
+                        <div class="input-box2">
+                            <input type="password" name="password" placeholder="비밀번호는 뭘로 하실건가요" required>
+                        </div>
+                        <div class="input-box2">
+                            <input type="text" name="inviteCode" placeholder="초대코드를 입력하세요" required>
+                        </div>
+                    </div>
+                    <div style="width: 50%;">
+                        <div class="input-box2">
+                            <input type="text" name="inviter" placeholder="초대인을 입력하세요" required>
+                        </div>
+                        <div class="input-box2">
+                            <input type="number" name="age" placeholder="당신은 몇 살 인가요" required>
+                        </div>
+                        <div class="input-box2">
+                            <input type="text" name="favorite" placeholder="당신이 좋아하는 것은 무엇인가요" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="width: 100%; display: flex; margin-bottom: 20px; margin-top:40px;">
+                    <input type="checkbox" name="agreeTerms" id="agreeTerms" required/>
+                    <p style="padding-left: 20px">제 3자 정보제공에 동의합니다.</p>
+                </div>
+
+                <button type="submit" class="sign-in-button">Sign up</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
